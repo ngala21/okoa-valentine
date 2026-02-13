@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For Tracy ❤️</title>
+  <style>
+    :root {
+        --primary-pink: #ff4d6d;
+        --soft-pink: #fff0f3;
+        --dark-pink: #c9184a;
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: var(--soft-pink);
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        overflow: hidden;
+        text-align: center;
+    }
+
+        
+    .container {
+        cursor: pointer;
+        transition: transform 0.3s;
+    }
+
+        .heart {
+            background-color: var(--primary-pink);
+            display: inline-block;
+            height: 100px;
+            margin: 0 10px;
+            position: relative;
+            top: 0;
+            transform: rotate(-45deg);
+            width: 100px;
+            animation: pulse 1.2s infinite;
+            box-shadow: 0 10px 30px rgba(255, 77, 109, 0.3);
+        }
+
+        .heart:before, .heart:after {
+            content: "";
+            background-color: var(--primary-pink);
+            border-radius: 50%;
+            height: 100px;
+            position: absolute;
+            width: 100px;
+        }
+
+        .heart:before { top: -50px; left: 0; }
+        .heart:after { left: 50px; top: 0; }
+
+        @keyframes pulse {
+            0% { transform: rotate(-45deg) scale(1); }
+            50% { transform: rotate(-45deg) scale(1.15); }
+            100% { transform: rotate(-45deg) scale(1); }
+        }
+
+        /* Message Styles */
+        #message {
+            display: none;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        h1 {
+            color: var(--dark-pink);
+            font-size: 3rem;
+            margin: 0;
+            animation: fadeIn 2s;
+        }
+
+        .signature {
+            color: var(--primary-pink);
+            font-style: italic;
+            font-size: 1.2rem;
+            animation: fadeIn 3s;
+        }
+
+        /* Falling Hearts Animation */
+        .falling-heart {
+            position: absolute;
+            color: var(--primary-pink);
+            font-size: 20px;
+            user-select: none;
+            z-index: -1;
+            animation: fall linear forwards;
+        }
+
+        @keyframes fall {
+            to { transform: translateY(100vh) rotate(360deg); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container" id="heart-btn" onclick="showMessage()">
+        <div class="heart"></div>
+        <p style="color: #ff4d6d; margin-top: 60px; font-weight: bold;">Click me, Tracy</p>
+    </div>
+
+    <div id="message">
+        <h1>Happy Valentines Tracy ❤️</h1>
+        <div class="signature">from your manzz Ryannnn</div>
+    </div>
+
+    <script>
+        function showMessage() {
+            // Hide the heart button
+            document.getElementById('heart-btn').style.display = 'none';
+            
+            // Show the message
+            const messageDiv = document.getElementById('message');
+            messageDiv.style.display = 'flex';
+
+            // Start falling hearts
+            setInterval(createFallingHeart, 300);
+        }
+
+        function createFallingHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('falling-heart');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
+            heart.style.opacity = Math.random();
+            heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+            
+            document.body.appendChild(heart);
+
+            // Remove heart after it falls to keep the page clean
+            setTimeout(() => {
+                heart.remove();
+            }, 5000);
+        }
+    </script>
+</body>
+</html>

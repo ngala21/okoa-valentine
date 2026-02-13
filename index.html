@@ -1,147 +1,189 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>For Tracy ❤️</title>
-  <style>
-    :root {
-        --primary-pink: #ff4d6d;
-        --soft-pink: #fff0f3;
-        --dark-pink: #c9184a;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's 2026 🇰🇪</title>
+    <style>
+        :root {
+            --primary-pink: #ff4d6d;
+            --whatsapp-green: #25D366;
+        }
 
-    body {
-        margin: 0;
-        padding: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        background-color: var(--soft-pink);
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        overflow: hidden;
-        text-align: center;
-    }
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; 
+            min-height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+                        url('hsbc.jpeg'); 
+            background-size: cover;
+            background-position: center bottom;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            font-family: 'Segoe UI', sans-serif;
+            text-align: center;
+            background-color: #0b0d0f; 
+        }
 
-        
-    .container {
-        cursor: pointer;
-        transition: transform 0.3s;
-    }
+        /* MOBILE OPTIMIZATION */
+        @media (max-width: 600px) {
+            body {
+                background-size: cover; 
+                background-attachment: scroll; 
+            }
+            .glass-card {
+                margin-top: 12vh !important; 
+                width: 85% !important;
+                padding: 20px !important;
+            }
+            h1 { font-size: 1.4rem !important; }
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 30px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.6);
+            width: 90%;
+            max-width: 400px;
+            margin-top: 15vh; 
+            z-index: 20;
+        }
 
         .heart {
             background-color: var(--primary-pink);
             display: inline-block;
-            height: 100px;
-            margin: 0 10px;
+            height: 50px;
             position: relative;
-            top: 0;
             transform: rotate(-45deg);
-            width: 100px;
+            width: 50px;
             animation: pulse 1.2s infinite;
-            box-shadow: 0 10px 30px rgba(255, 77, 109, 0.3);
+            cursor: pointer;
         }
 
         .heart:before, .heart:after {
             content: "";
             background-color: var(--primary-pink);
             border-radius: 50%;
-            height: 100px;
+            height: 50px;
             position: absolute;
-            width: 100px;
+            width: 50px;
         }
-
-        .heart:before { top: -50px; left: 0; }
-        .heart:after { left: 50px; top: 0; }
+        .heart:before { top: -25px; left: 0; }
+        .heart:after { left: 25px; top: 0; }
 
         @keyframes pulse {
             0% { transform: rotate(-45deg) scale(1); }
-            50% { transform: rotate(-45deg) scale(1.15); }
+            50% { transform: rotate(-45deg) scale(1.1); }
             100% { transform: rotate(-45deg) scale(1); }
         }
 
-        /* Message Styles */
         #message {
             display: none;
             flex-direction: column;
-            gap: 20px;
+            gap: 15px;
         }
 
         h1 {
-            color: var(--dark-pink);
-            font-size: 3rem;
-            margin: 0;
-            animation: fadeIn 2s;
+            color: white;
+            font-size: 1.8rem;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+            margin: 10px 0;
         }
 
-        .signature {
-            color: var(--primary-pink);
-            font-style: italic;
+        .details {
+            color: #00ff00;
+            font-weight: bold;
             font-size: 1.2rem;
-            animation: fadeIn 3s;
+            text-transform: uppercase;
         }
 
-        /* Falling Hearts Animation */
-        .falling-heart {
+        .whatsapp-btn {
+            background-color: var(--whatsapp-green);
+            color: white;
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 30px;
+            font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin: 15px 0;
+            font-size: 0.95rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+        }
+
+        .rugby-ball {
             position: absolute;
-            color: var(--primary-pink);
-            font-size: 20px;
-            user-select: none;
-            z-index: -1;
+            z-index: 10;
+            pointer-events: none;
             animation: fall linear forwards;
         }
 
         @keyframes fall {
-            to { transform: translateY(100vh) rotate(360deg); }
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            to { transform: translateY(110vh) rotate(720deg); }
         }
     </style>
 </head>
 <body>
 
-    <div class="container" id="heart-btn" onclick="showMessage()">
-        <div class="heart"></div>
-        <p style="color: #ff4d6d; margin-top: 60px; font-weight: bold;">Click me, Tracy</p>
-    </div>
+    <div class="glass-card" id="main-container">
+        <div id="click-zone">
+            <div class="heart" onclick="reveal()" style="margin-top: 20px;"></div>
+            <p style="color: white; font-weight: bold; margin-top: 30px; font-size: 0.9rem;">Bonyeza moyo uone...</p>
+        </div>
 
-    <div id="message">
-        <h1>Happy Valentines Tracy ❤️</h1>
-        <div class="signature">from your manzz Ryannnn</div>
+        <div id="message">
+            <h1 id="greeting">Happy Valentine's! ❤️</h1>
+            <div class="details">Tupatane HSBC SVNS 2 <br> Nyayo Stadium 🇰🇪</div>
+            
+            <a href="#" id="whatsapp-link" class="whatsapp-btn">
+                <span>Share with the Squad on Whatsapp</span> 🏉
+            </a>
+
+            <div style="color: white; font-size: 0.75rem; opacity: 0.8;">#natujenge — Ngala</div>
+        </div>
     </div>
 
     <script>
-        function showMessage() {
-            // Hide the heart button
-            document.getElementById('heart-btn').style.display = 'none';
+        function reveal() {
+            let name = prompt("Andika jina yako wee mzee:");
+            const greeting = document.getElementById('greeting');
             
-            // Show the message
-            const messageDiv = document.getElementById('message');
-            messageDiv.style.display = 'flex';
+            let displayName = (name && name.trim().length > 0) ? name.trim() : "";
+            
+            if (displayName !== "") {
+                greeting.innerText = `Happy Valentine's ${displayName}! ❤️`;
+            } else {
+                greeting.innerText = `Happy Valentine's! ❤️`;
+            }
 
-            // Start falling hearts
-            setInterval(createFallingHeart, 300);
+            const shareText = encodeURIComponent(`Niaje! Angalia hii surprise kutoka kwa Ngala... Tupatane HSBC SVNS Nyayo Stadium! 🇰🇪 🏉\n\nCheck it out here: ${window.location.href}`);
+            document.getElementById('whatsapp-link').href = `https://wa.me/?text=${shareText}`;
+
+            document.getElementById('click-zone').style.display = 'none';
+            document.getElementById('message').style.display = 'flex';
+
+            setInterval(spawnRugbyBall, 350);
         }
 
-        function createFallingHeart() {
-            const heart = document.createElement('div');
-            heart.classList.add('falling-heart');
-            heart.innerHTML = '❤️';
-            heart.style.left = Math.random() * 100 + 'vw';
-            heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
-            heart.style.opacity = Math.random();
-            heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
-            
-            document.body.appendChild(heart);
-
-            // Remove heart after it falls to keep the page clean
-            setTimeout(() => {
-                heart.remove();
-            }, 5000);
+        function spawnRugbyBall() {
+            const ball = document.createElement('div');
+            ball.classList.add('rugby-ball');
+            ball.innerHTML = '🏉'; 
+            ball.style.left = Math.random() * 95 + 'vw';
+            ball.style.top = '-50px';
+            ball.style.animationDuration = (Math.random() * 2 + 2) + 's';
+            ball.style.fontSize = (Math.random() * 10 + 20) + 'px';
+            document.body.appendChild(ball);
+            setTimeout(() => ball.remove(), 4000);
         }
     </script>
 </body>
